@@ -48,7 +48,7 @@ function eachTitle(name){
         ("0" + date.getUTCDate()).slice(-2)
       ].join("-");
 
-      //checks if the anime is still airing or has finished airing
+      //checks if the anime is still airing or has finished airing or have yet to air
       if(title.score == "0"){
         status = "Not Aired Yet"; 
         startDate = "-";
@@ -108,7 +108,7 @@ function loadpage(){
 
 function myFunction(){ 
   document.getElementById("search").innerHTML
-  
 }
 
 window.addEventListener("load", loadpage)
+$(".button-collapse").sideNav();
