@@ -1,0 +1,46 @@
+.rowrow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    justify-content: stretch;
+}
+
+.rowrow > *{
+    flex-basis: 20rem;
+    flex-shrink: 0;
+}
+
+.rowrow .card{
+    display: flex;
+    flex-direction: column;
+    background-color: turquoise;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.synopsis{
+    text-align: center;
+    font-size: 20px;
+}
+
+.label_warning{
+    color: white;
+    background-color: #ff9800;
+}
+
+.rowrow .card > .card-content{
+    flex-grow: 1;
+}
+
+.rowrow .card > .card-action{
+    text-align: center;
+    background-color: grey;
+}
+
+.rowrow .card > .card-image{
+    flex-basis: 25rem;
+    overflow-y: hidden;
+}
