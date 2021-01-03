@@ -1,3 +1,5 @@
+/* Search function data */
+
 .rowrow{
     display: flex;
     flex-direction: row;
@@ -47,13 +49,193 @@
     overflow-y: hidden;
 }
 
+nav{
+    background-color: #93E7FB;
+}
+
+nav ul a {
+    color: black;
+}
+
+nav i, nav i .material-icons{
+    color: black;
+}
 .navbar{
     width: 100%;
 }
-.mallogo{
-    width: 80%;
+.yylogo{
+    width: 28%;
 }
 
+
+/*Top Upcoming Anime CSS*/
+
+#upcResult{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+    width: 60%;
+}
+
+h3{
+    margin-top: 0;
+}
+
+.topupcanime_row {
+    background-color: #f5f6f9;
+    margin-bottom: 3px;
+    width: 60%;
+}
+
+.ranking-header {
+    background-color: #dde1ec;
+    border-bottom: #d7d7d7 1px solid;
+    text-align: center;
+    width: 36%;
+    margin-left: -11px;
+}
+
+
+.ranking-header .h2_side{
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.topupcanime_row .ranking-unit {
+    display: table;
+}
+
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.topupcanime_row .ranking-unit .rank {
+    display: table-cell;
+    font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    vertical-align: top;
+    text-align: center;
+}
+
+.topupcanime_row .ranking-unit .data-image {
+    display: table-cell;
+    text-align: center;
+    width: 40%;
+}
+
+.topupcanime_row .ranking-unit .data-image img{
+    margin-left: 10px;
+    width: 60%;
+}
+
+.topupcanime_row .ranking-unit .data {
+    display: table-cell;
+    vertical-align: top;
+    width: 50%;
+}
+
+.topupcanime_row .ranking-unit .title {
+    display: block;
+    font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif; 
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+}
+
+.topupcanime_row .ranking-unit .info {
+    color: #7f7f7f;
+    display: inline-block;
+    font-family: Avenir,lucida grande,tahoma,verdana,arial,sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+/*Most Popular Anime CSS*/
+
+.carousel{
+    transform: translateY(-50px);
+    height: 700px;
+    perspective: 600px;
+}
+.carousel .carousel-item{
+    width: 200px;
+}
+
+.carousel .carousel-item img{
+    width: 100%;
+}
+
+
+.carousel .carousel-item .ep{
+    margin: -5px 0 0 ;
+    padding: 0;
+    background: #fff;
+    color: #000;
+    box-sizing: border-box;
+    padding: 10px 5px;
+    font-weight: bold;
+    font-size: 0.85em;
+    text-align: center;
+}
+
+
+h5{
+    margin: -5px 0 0 ;
+    padding: 0;
+    color: #000;
+    box-sizing: border-box;
+    padding: 10px 5px;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+/* Media Query */
+@media screen and (max-width: 1024px){
+    .rowrow {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    nav .brand-logo{
+        text-align: center;
+    }
+
+    .yylogo{
+        width: 28%;
+    }
+
+    .side-nav{
+        width: 120px;
+    }
+
+}
+
+@media screen and (max-width: 820px){
+    .rowrow {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    nav .brand-logo{
+        text-align: center;
+    }
+
+    .yylogo{
+        width: 28%;
+    }
+
+    .side-nav{
+        width: 120px;
+    }
+
+}
 @media screen and (max-width: 600px) {
     .rowrow {
         width: 100%;
@@ -61,15 +243,58 @@
         margin-bottom: 20px;
     }
 
-    .mallogo{
-        width: 90%;
-        justify-content: center;
-        margin-left: 25px;
-        margin-top: 10px;
+    nav .brand-logo{
+        text-align: center;
+    }
+
+    .yylogo{
+        width: 25%;
     }
 
     .side-nav{
         width: 120px;
     }
 
-  }
+}
+
+@media screen and (max-width: 569px){
+    .rowrow {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    nav .brand-logo{
+        text-align: center;
+    }
+
+    .yylogo{
+        width: 25%;
+    }
+
+    .side-nav{
+        width: 120px;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+    .rowrow {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    nav .brand-logo{
+        text-align: center;
+    }
+
+    .yylogo{
+        width: 26%;
+    }
+
+    .side-nav{
+        width: 120px;
+    }
+
+}
