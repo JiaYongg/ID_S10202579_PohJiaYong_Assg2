@@ -7,7 +7,7 @@ function searchTitle(event){
   let myform = new FormData(this);
   let query = myform.get("search");
 
-  fetch(`${url}/search/anime?q=${query}&page=1&genre=12&genre_exclude=0`) // gets url from user's input and excludes NSFW contents
+  fetch(`${url}/search/anime?q=${query}&page=1`) // gets url from user's input and excludes NSFW contents -> &genre=12&genre_exclude=0
   .then(res => res.json()) //converts to json 
   .then(eachTitle) //calls the eachTitle function
   .catch(err =>console.log(err.message)) //shows error message if any in console.log
@@ -28,7 +28,7 @@ function topAnimeData(data){
   let topResult4 = document.getElementById("top-fourth")
   let topResult5 = document.getElementById("top-fifth")
 
-  data.top.forEach(title => { console.log(title)}); 
+  //data.top.forEach(title => { console.log(title)}); 
 
   
   topResult.innerHTML = data.top
@@ -106,7 +106,7 @@ function mostPopAnimeapi(){
 
 
 function mostPopAnimeData(data){
-  data.top.forEach(title => { console.log(title)}); 
+  //data.top.forEach(title => { console.log(title)}); 
 
   let popResult = document.getElementById("pop-first")
   let popResult2 = document.getElementById("pop-second")
@@ -187,13 +187,13 @@ function upcAnimeapi(){
 
 function upcAnimeData(data){
   let topUpcResult = document.getElementById("upcResult")
-  data.top.forEach(title => { console.log(title)}); 
+  //data.top.forEach(title => { console.log(title)}); 
 
 
   topUpcResult.innerHTML = data.top
   .map(topUpcAnime => {
     if (topUpcAnime.episodes == null){
-      topUpcAnime.episodes = 0
+      topUpcAnime.episodes = "?"
     }
     if (topUpcAnime.score == 0){
       topUpcAnime.score = "N/A"
@@ -251,7 +251,7 @@ function eachTitle(name){
       .map(title =>{
       var date = new Date(title.start_date) //converts json time format to yy/mm/dd
 
-      //gets the anime/manga air date
+      //gets the anime start & air date
       var startDate = [
         date.getUTCFullYear() , 
         ("0" + (date.getUTCMonth()+1)).slice(-2), 
@@ -268,10 +268,11 @@ function eachTitle(name){
       if(title.score == "0"){
         status = "Not Aired Yet"; 
         startDate = "-";
+        title.episodes = "?";
       }
       else if(title.airing == true) {
         status = "Currently Airing";
-        title.episodes = "-";
+        title.episodes = "?";
         toAirDate = "-";
       }
       else{
