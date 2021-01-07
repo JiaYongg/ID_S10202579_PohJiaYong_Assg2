@@ -325,6 +325,7 @@ function monScheduleData(data){
     //set genres as a string and loops the mondaySchedule genres array and append each object's "name" to genres
     let genres = "";
     mondaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
+    
     // console.log(genres)
     var date = new Date(mondaySchedule.airing_start)
 
@@ -732,7 +733,7 @@ $(document).ready(function(){
 
 $('#search').keypress(function(e){
   if(e.keyCode == 13){
-    e.preventDefault();
+    myFunction;
   }
 });
 
