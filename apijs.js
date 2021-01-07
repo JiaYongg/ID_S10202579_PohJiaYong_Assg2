@@ -322,9 +322,16 @@ function monScheduleData(data){
   schedule.innerHTML = data.monday
   .map(mondaySchedule => {
 
-    //set genres as a string and loops the mondaySchedule genres array and append each object's "name" to genres
+    //set genres as a string and loops the sundaySchedule genres array and append each object's "name" to genres and 
+    //when it hits the 4th iteration of genre tags, it will send a <br> tag to seperate the rest of the genres to the next line
     let genres = "";
-    mondaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
+    var i;
+    for (i = 0; i < (mondaySchedule.genres).length; i++) {
+      if(i == 4){
+        genres += "<br>"
+      }
+      genres += ('<span class="genretype">' + mondaySchedule.genres[i].name + '</span>')
+    }
     
     // console.log(genres)
     var date = new Date(mondaySchedule.airing_start)
@@ -339,7 +346,6 @@ function monScheduleData(data){
       mondaySchedule.score = `${mondaySchedule.score}/10`
     }
 
-    
     return `
     <div class="card">
       <div class="card-image">
@@ -347,7 +353,7 @@ function monScheduleData(data){
       </div>
       <span class="genre">${genres}</span>
       <div class="card-content">
-        <span class="card-title"><strong><em>${mondaySchedule.title}</em></strong></span>
+        <span class="card-title"><strong><a class="title" href="${mondaySchedule.url}" target="_blank"><em>${mondaySchedule.title}</em></a></strong></span>
         <span><strong> Episode(s): ${mondaySchedule.episodes} </strong></span><br>  
         <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
         <span><strong> Overall Ratings: ${mondaySchedule.score} </strong></span>   
@@ -376,9 +382,16 @@ function tuesScheduleData(data){
   schedule.innerHTML = data.tuesday
   .map(tuesdaySchedule => {
 
-    //set genres as a string and loops the tuesdaySchedule genres array and append each object's "name" to genres    
+    //set genres as a string and loops the sundaySchedule genres array and append each object's "name" to genres and 
+    //when it hits the 4th iteration of genre tags, it will send a <br> tag to seperate the rest of the genres to the next line
     let genres = "";
-    tuesdaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
+    var i;
+    for (i = 0; i < (tuesdaySchedule.genres).length; i++) {
+      if(i == 4){
+        genres += "<br>"
+      }
+      genres += ('<span class="genretype">' + tuesdaySchedule.genres[i].name + '</span>')
+    }
       
     var date = new Date(tuesdaySchedule.airing_start)
     
@@ -399,7 +412,7 @@ function tuesScheduleData(data){
       </div>
       <span class="genre">${genres}</span>
       <div class="card-content">
-        <span class="card-title"><strong><em>${tuesdaySchedule.title}</em></strong></span>
+        <span class="card-title"><strong><a class="title" href="${tuesdaySchedule.url}" target="_blank"><em>${tuesdaySchedule.title}</em></a></strong></span>
         <span><strong> Episode(s): ${tuesdaySchedule.episodes} </strong></span><br>  
         <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
         <span><strong> Overall Ratings: ${tuesdaySchedule.score} </strong></span>   
@@ -429,9 +442,16 @@ function wedScheduleData(data){
   schedule.innerHTML = data.wednesday
   .map(wednesdaySchedule => {
 
-    //set genres as a string and loops the wednesdaySchedule genres array and append each object's "name" to genres    
+    //set genres as a string and loops the sundaySchedule genres array and append each object's "name" to genres and 
+    //when it hits the 4th iteration of genre tags, it will send a <br> tag to seperate the rest of the genres to the next line
     let genres = "";
-    wednesdaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
+    var i;
+    for (i = 0; i < (wednesdaySchedule.genres).length; i++) {
+      if(i == 4){
+        genres += "<br>"
+      }
+      genres += ('<span class="genretype">' + wednesdaySchedule.genres[i].name + '</span>')
+    }
       
     var date = new Date(wednesdaySchedule.airing_start)
     
@@ -452,7 +472,7 @@ function wedScheduleData(data){
       </div>
       <span class="genre">${genres}</span>
       <div class="card-content">
-        <span class="card-title"><strong><em>${wednesdaySchedule.title}</em></strong></span>
+        <span class="card-title"><strong><a class="title" href="${wednesdaySchedule.url}" target="_blank"><em>${wednesdaySchedule.title}</em></a></strong></span>
         <span><strong> Episode(s): ${wednesdaySchedule.episodes} </strong></span><br>  
         <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
         <span><strong> Overall Ratings: ${wednesdaySchedule.score} </strong></span>   
@@ -482,9 +502,16 @@ function thursScheduleData(data){
   schedule.innerHTML = data.thursday
   .map(thursdaySchedule => {
 
-    //set genres as a string and loops the thursdaySchedule genres array and append each object's "name" to genres
+    //set genres as a string and loops the sundaySchedule genres array and append each object's "name" to genres and 
+    //when it hits the 4th iteration of genre tags, it will send a <br> tag to seperate the rest of the genres to the next line
     let genres = "";
-    thursdaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
+    var i;
+    for (i = 0; i < (thursdaySchedule.genres).length; i++) {
+      if(i == 4){
+        genres += "<br>"
+      }
+      genres += ('<span class="genretype">' + thursdaySchedule.genres[i].name + '</span>')
+    }
       
     var date = new Date(thursdaySchedule.airing_start)
     
@@ -505,7 +532,7 @@ function thursScheduleData(data){
       </div>
       <span class="genre">${genres}</span>
       <div class="card-content">
-        <span class="card-title"><strong><em>${thursdaySchedule.title}</em></strong></span>
+        <span class="card-title"><strong><a class="title" href="${thursdaySchedule.url}" target="_blank"><em>${thursdaySchedule.title}</em></a></strong></span>
         <span><strong> Episode(s): ${thursdaySchedule.episodes} </strong></span><br>  
         <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
         <span><strong> Overall Ratings: ${thursdaySchedule.score} </strong></span>   
@@ -535,9 +562,16 @@ function friScheduleData(data){
   schedule.innerHTML = data.friday
   .map(fridaySchedule => {
 
-    //set genres as a string and loops the fridaySchedule genres array and append each object's "name" to genres
+    //set genres as a string and loops the sundaySchedule genres array and append each object's "name" to genres and 
+    //when it hits the 4th iteration of genre tags, it will send a <br> tag to seperate the rest of the genres to the next line
     let genres = "";
-    fridaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
+    var i;
+    for (i = 0; i < (fridaySchedule.genres).length; i++) {
+      if(i == 4){
+        genres += "<br>"
+      }
+      genres += ('<span class="genretype">' + fridaySchedule.genres[i].name + '</span>')
+    }
       
     var date = new Date(fridaySchedule.airing_start)
     
@@ -558,7 +592,7 @@ function friScheduleData(data){
       </div>
       <span class="genre">${genres}</span>
       <div class="card-content">
-        <span class="card-title"><strong><em>${fridaySchedule.title}</em></strong></span>
+        <span class="card-title"><strong><a class="title" href="${fridaySchedule.url}" target="_blank"><em>${fridaySchedule.title}</em></a></strong></span>
         <span><strong> Episode(s): ${fridaySchedule.episodes} </strong></span><br>  
         <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
         <span><strong> Overall Ratings: ${fridaySchedule.score} </strong></span>   
@@ -588,10 +622,16 @@ function satScheduleData(data){
   schedule.innerHTML = data.saturday
   .map(saturdaySchedule => {
 
-    //set genres as a string and loops the saturdaySchedule genres array and append each object's "name" to genres
+    //set genres as a string and loops the sundaySchedule genres array and append each object's "name" to genres and 
+    //when it hits the 4th iteration of genre tags, it will send a <br> tag to seperate the rest of the genres to the next line
     let genres = "";
-    saturdaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
-      
+    var i;
+    for (i = 0; i < (saturdaySchedule.genres).length; i++) {
+      if(i == 4){
+        genres += "<br>"
+      }
+      genres += ('<span class="genretype">' + saturdaySchedule.genres[i].name + '</span>')
+    }     
     var date = new Date(saturdaySchedule.airing_start)
     
     if(saturdaySchedule.episodes == null){
@@ -611,7 +651,7 @@ function satScheduleData(data){
       </div>
       <span class="genre">${genres}</span>
       <div class="card-content">
-        <span class="card-title"><strong><em>${saturdaySchedule.title}</em></strong></span>
+        <span class="card-title"><strong><a class="title" href="${saturdaySchedule.url}" target="_blank"><em>${saturdaySchedule.title}</em></a></strong></span>
         <span><strong> Episode(s): ${saturdaySchedule.episodes} </strong></span><br>  
         <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
         <span><strong> Overall Ratings: ${saturdaySchedule.score} </strong></span>   
@@ -641,10 +681,19 @@ function sunScheduleData(data){
   schedule.innerHTML = data.sunday
   .map(sundaySchedule => {
 
-    //set genres as a string and loops the sundaySchedule genres array and append each object's "name" to genres
+
+    //set genres as a string and loops the sundaySchedule genres array and append each object's "name" to genres and 
+    //when it hits the 4th iteration of genre tags, it will send a <br> tag to seperate the rest of the genres to the next line
     let genres = "";
-    sundaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
-      
+    var i;
+    for (i = 0; i < (sundaySchedule.genres).length; i++) {
+      if(i == 4){
+        genres += "<br>"
+      }
+      genres += ('<span class="genretype">' + sundaySchedule.genres[i].name + '</span>')
+    }
+
+  
     var date = new Date(sundaySchedule.airing_start)
     
     if(sundaySchedule.episodes == null){
@@ -664,7 +713,7 @@ function sunScheduleData(data){
       </div>
       <span class="genre">${genres}</span>
       <div class="card-content">
-        <span class="card-title"><strong><em>${sundaySchedule.title}</em></strong></span>
+        <span class="card-title"><strong><a class="title" href="${sundaySchedule.url}" target="_blank"><em>${sundaySchedule.title}</em></a></strong></span>
         <span><strong> Episode(s): ${sundaySchedule.episodes} </strong></span><br>  
         <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
         <span><strong> Overall Ratings: ${sundaySchedule.score} </strong></span>   
