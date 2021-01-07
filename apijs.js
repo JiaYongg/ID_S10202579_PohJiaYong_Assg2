@@ -10,6 +10,7 @@ function searchTitle(event){
   fetch(`${url}/search/anime?q=${query}&page=1`) // gets url from user's input and excludes NSFW contents -> &genre=12&genre_exclude=0
   .then(res => res.json()) //converts to json 
   .then(eachTitle) //calls the eachTitle function
+  .then(myFunction)//upon clicking the "Search" button, it scrolls downs to the result
   .catch(err =>console.log(err.message)) //shows error message if any in console.log
 }
 
@@ -18,7 +19,6 @@ function eachTitle(name){
   let result = document.getElementById("searchdata"); 
   name.results.forEach(title => { console.log(title)}); //Checks for user's input result array, returns list of key value pair.
 
-  
   //sort the animes by categories
   let animeCat = name.results
       .reduce((acc, anime) =>{
@@ -32,7 +32,6 @@ function eachTitle(name){
       
       //loop through the animeCat array and gets the key of the object and map it with the animelist
       result.innerHTML =  Object.keys(animeCat).map(key => { 
-
 
       let animeList = animeCat[key]
       .map(title =>{
@@ -66,9 +65,9 @@ function eachTitle(name){
           status= "Finished Airing";
           toAirDate = "-";
         }
+
         //prints the user's input result as a string in the form of HTML tags using cards
         return `
-          
           <div class="card">
             <div class="card-image">
                 <img src="${title.image_url}">
@@ -95,16 +94,12 @@ function eachTitle(name){
         return `
         <section class="sect">
           <h4 style="text-align: center;">${key.toUpperCase()}</h4>
-          <div class="rowrow">${animeList}</div>
+          <div class="rowrow" id="section2">${animeList}</div>
         </section>
         `
-
         }).join("");
 
-
 }
-
-
 
 /*Top Airing Anime API */
 function topAirAnimeapi(){
@@ -131,11 +126,10 @@ function topAnimeData(data){
     }
     if (topanime.rank == 1) //takes the rank 1 show
     return `     
-    <a href="${topanime.url} class="link"><img src="${topanime.image_url}"></a>
+    <a href="${topanime.url} class="link" target="_blank"><img src="${topanime.image_url}"></a>
     <h5 style="color: gold;">Rank ${topanime.rank}</h5>
-    <a href="${topanime.url} class="link"><h5>${topanime.title}</h5></a>
+    <a href="${topanime.url} class="link" target="_blank"><h5>${topanime.title}</h5></a>
     <p style="text-align: center; font-weight: bold;">Overall Ratings: ${topanime.score}/10</p>
-    
     `
 }).join("");
 
@@ -143,11 +137,10 @@ function topAnimeData(data){
   .map(topanime => {
     if(topanime.rank == 2)
     return `     
-    <a href="${topanime.url} class="link"><img src="${topanime.image_url}"></a>
+    <a href="${topanime.url} class="link" target="_blank"><img src="${topanime.image_url}"></a>
     <h5 style="color:	silver;">Rank ${topanime.rank}</h5>
-    <a href="${topanime.url} class="link"><h5>${topanime.title}</h5></a>
+    <a href="${topanime.url} class="link" target="_blank"><h5>${topanime.title}</h5></a>
     <p style="text-align: center; font-weight: bold;">Overall Ratings: ${topanime.score}/10</p>
-    
     `
 }).join("");
 
@@ -155,11 +148,10 @@ topResult3.innerHTML = data.top
 .map(topanime => {
   if(topanime.rank == 3)
   return `     
-  <a href="${topanime.url} class="link"><img src="${topanime.image_url}"></a>
-  <h5 style="color:	silver;">Rank ${topanime.rank}</h5>
-  <a href="${topanime.url} class="link"><h5>${topanime.title}</h5></a>
+  <a href="${topanime.url} class="link" target="_blank"><img src="${topanime.image_url}"></a>
+  <h5 style="color:	brown;">Rank ${topanime.rank}</h5>
+  <a href="${topanime.url} class="link" target="_blank"><h5>${topanime.title}</h5></a>
   <p style="text-align: center; font-weight: bold;">Overall Ratings: ${topanime.score}/10</p>
-  
   `
 }).join("");
 
@@ -167,11 +159,10 @@ topResult4.innerHTML = data.top
 .map(topanime => {
   if(topanime.rank == 4)
   return `     
-  <a href="${topanime.url} class="link"><img src="${topanime.image_url}"></a>
-  <h5 style="color:	silver;">Rank ${topanime.rank}</h5>
-  <a href="${topanime.url} class="link"><h5>${topanime.title}</h5></a>
+  <a href="${topanime.url} class="link" target="_blank"><img src="${topanime.image_url}"></a>
+  <h5>Rank ${topanime.rank}</h5>
+  <a href="${topanime.url} class="link" target="_blank"><h5>${topanime.title}</h5></a>
   <p style="text-align: center; font-weight: bold;">Overall Ratings: ${topanime.score}/10</p>
-  
   `
 }).join("");
 
@@ -179,16 +170,14 @@ topResult5.innerHTML = data.top
 .map(topanime => {
   if(topanime.rank == 5)
   return `     
-  <a href="${topanime.url} class="link"><img src="${topanime.image_url}"></a>
-  <h5 style="color:	silver;">Rank ${topanime.rank}</h5>
-  <a href="${topanime.url} class="link"><h5>${topanime.title}</h5></a>
+  <a href="${topanime.url} class="link" target="_blank"><img src="${topanime.image_url}"></a>
+  <h5>Rank ${topanime.rank}</h5>
+  <a href="${topanime.url} class="link" target="_blank"><h5>${topanime.title}</h5></a>
   <p style="text-align: center; font-weight: bold;">Overall Ratings: ${topanime.score}/10</p>
-  
   `
 }).join("");
   
 }
-
 
 
 /* Most Popular Anime API */
@@ -198,7 +187,6 @@ function mostPopAnimeapi(){
   .then(mostPopAnimeData)
   .catch(err => console.log(err.message));
 }
-
 
 function mostPopAnimeData(data){
   //data.top.forEach(title => { console.log(title)}); 
@@ -213,11 +201,10 @@ function mostPopAnimeData(data){
   .map(popanime => {
       if(popanime.rank == 1)
       return `     
-      <a href="${popanime.url} class="link"><img src="${popanime.image_url}"></a>
+      <a href="${popanime.url} class="link" target="_blank"><img src="${popanime.image_url}"></a>
       <h5 style="color: gold;">Rank ${popanime.rank}</h5>
-      <a href="${popanime.url} class="link"><h5>${popanime.title}</h5></a>
+      <a href="${popanime.url} class="link" target="_blank"><h5>${popanime.title}</h5></a>
       <p style="text-align: center; font-weight: bold;" class="ep">Episodes: ${popanime.episodes}</p>
-      
       `
   }).join("");
 
@@ -225,11 +212,10 @@ function mostPopAnimeData(data){
   .map(popanime => {
       if(popanime.rank == 2)
       return `     
-      <a href="${popanime.url} class="link"><img src="${popanime.image_url}"></a>
+      <a href="${popanime.url} class="link" target="_blank"><img src="${popanime.image_url}"></a>
       <h5 style="color:	silver;">Rank ${popanime.rank}</h5>
-      <a href="${popanime.url} class="link"><h5>${popanime.title}</h5></a>
+      <a href="${popanime.url} class="link" target="_blank"><h5>${popanime.title}</h5></a>
       <p style="text-align: center; font-weight: bold;" class="ep">Episodes: ${popanime.episodes}</p>
-      
       `
   }).join("");
 
@@ -237,11 +223,10 @@ function mostPopAnimeData(data){
   .map(popanime => {
       if(popanime.rank == 3)
       return `     
-      <a href="${popanime.url} class="link"><img src="${popanime.image_url}"></a>
+      <a href="${popanime.url} class="link" target="_blank"><img src="${popanime.image_url}"></a>
       <h5 style="color: brown;">Rank ${popanime.rank}</h5>
-      <a href="${popanime.url} class="link"><h5>${popanime.title}</h5></a>
+      <a href="${popanime.url} class="link" target="_blank"><h5>${popanime.title}</h5></a>
       <p style="text-align: center; font-weight: bold; "class="ep">Episodes: ${popanime.episodes}</p>
-      
       `
   }).join("");
 
@@ -249,11 +234,10 @@ function mostPopAnimeData(data){
   .map(popanime => {
       if(popanime.rank == 4)
       return `     
-      <a href="${popanime.url} class="link"><img src="${popanime.image_url}"></a>
+      <a href="${popanime.url} class="link" target="_blank"><img src="${popanime.image_url}"></a>
       <h5>Rank ${popanime.rank}</h5>
-      <a href="${popanime.url} class="link"><h5>${popanime.title}</h5></a>
+      <a href="${popanime.url} class="link" target="_blank"><h5>${popanime.title}</h5></a>
       <p style="text-align: center; font-weight: bold;" class="ep">Episodes: ${popanime.episodes}</p>
-      
       `
   }).join("");
 
@@ -261,17 +245,14 @@ function mostPopAnimeData(data){
   .map(popanime => {
       if(popanime.rank == 5)
       return `     
-      <a href="${popanime.url} class="link"><img src="${popanime.image_url}"></a>
+      <a href="${popanime.url} class="link" target="_blank"><img src="${popanime.image_url}"></a>
       <h5>Rank ${popanime.rank}</h5>
-      <a href="${popanime.url} class="link"><h5>${popanime.title}</h5></a>
+      <a href="${popanime.url} class="link" target="_blank"><h5>${popanime.title}</h5></a>
       <p style="text-align: center; font-weight: bold;" class="ep">Episodes: ${popanime.episodes}</p>
-      
       `
   }).join("");
 
-
 }
-
 
 
 /*Top Upcoming Anime API*/
@@ -302,13 +283,13 @@ function upcAnimeData(data){
       <li class="ranking-unit">
         <span class="rank">Rank ${topUpcAnime.rank}</span>
         <p class="data-image">
-          <a class="image" href="${topUpcAnime.url}">
+          <a class="image" href="${topUpcAnime.url}" target="_blank">
             <img src="${topUpcAnime.image_url}">
           </a>
         </p>
         <div class="data">
           <h3 class="h3 side">
-            <a class="title" href="${topUpcAnime.url}">${topUpcAnime.title}</a>
+            <a class="title" href="${topUpcAnime.url}" target="_blank">${topUpcAnime.title}</a>
           </h3>
           <span class="info pt8">
             ${topUpcAnime.type}, ${topUpcAnime.episodes} eps, scored ${topUpcAnime.score}
@@ -317,12 +298,10 @@ function upcAnimeData(data){
         </div>
       </li>
     </div>
-
     `
   }).join("");
 
 }
-
 
 
 /*Daily Anime Schedule API */
@@ -343,50 +322,43 @@ function monScheduleData(data){
   schedule.innerHTML = data.monday
   .map(mondaySchedule => {
 
-      let genres = [];
-      mondaySchedule.genres.forEach(type => genres.push(type.name))
-      
-      var date = new Date(mondaySchedule.airing_start)
-      
+    //set genres as a string and loops the mondaySchedule genres array and append each object's "name" to genres
+    let genres = "";
+    mondaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
+    // console.log(genres)
+    var date = new Date(mondaySchedule.airing_start)
 
-      if(mondaySchedule.episodes == null){
-        mondaySchedule.episodes = "?";
-      }
-      if(mondaySchedule.score == null){
-        mondaySchedule.score = "N/A"
-      }
-      else{
-        mondaySchedule.score = `${mondaySchedule.score}/10`
-      }
-      
-      return `
-      <div class="card">
-        <div class="card-image">
-            <img src="${mondaySchedule.image_url}">
-        </div>
+    if(mondaySchedule.episodes == null){
+      mondaySchedule.episodes = "?";
+    }
+    if(mondaySchedule.score == null){
+      mondaySchedule.score = "N/A"
+    }
+    else{
+      mondaySchedule.score = `${mondaySchedule.score}/10`
+    }
 
-        <div class="card-content">
-          <span class="card-title"><strong><em>${mondaySchedule.title}</em></strong></span>
-          <span><strong> Episode(s): ${mondaySchedule.episodes} </strong></span><br>  
-          <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
-          <span><strong>Genre: ${genres} </strong></span><br>  
-          <span><strong> Overall Ratings: ${mondaySchedule.score} </strong></span>   
-        </div>
-
-        
-        <p class="synopsis">${mondaySchedule.synopsis}</p>
-
-
-        <div class="card-action">
-          <a href="${mondaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
-        </div>
+    
+    return `
+    <div class="card">
+      <div class="card-image">
+          <img src="${mondaySchedule.image_url}">
       </div>
-      
-      
-      `
+      <span class="genre">${genres}</span>
+      <div class="card-content">
+        <span class="card-title"><strong><em>${mondaySchedule.title}</em></strong></span>
+        <span><strong> Episode(s): ${mondaySchedule.episodes} </strong></span><br>  
+        <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
+        <span><strong> Overall Ratings: ${mondaySchedule.score} </strong></span>   
+      </div>    
+      <p class="synopsis">${mondaySchedule.synopsis}</p>
+      <div class="card-action">
+        <a href="${mondaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
+      </div>
+    </div>
+    `
   }).join("");
   
-
 }
 
 /*Tuesday Anime API*/
@@ -403,50 +375,42 @@ function tuesScheduleData(data){
   schedule.innerHTML = data.tuesday
   .map(tuesdaySchedule => {
 
-      let genres = [];
-      tuesdaySchedule.genres.forEach(type => genres.push(type.name))
+    //set genres as a string and loops the tuesdaySchedule genres array and append each object's "name" to genres    
+    let genres = "";
+    tuesdaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
       
-      var date = new Date(tuesdaySchedule.airing_start)
-      
-
-      if(tuesdaySchedule.episodes == null){
-        tuesdaySchedule.episodes = "?";
-      }
-      if(tuesdaySchedule.score == null){
-        tuesdaySchedule.score = "N/A"
-      }
-      else{
-        tuesdaySchedule.score = `${tuesdaySchedule.score}/10`
-      }
-      
-      return `
-      <div class="card">
-        <div class="card-image">
-            <img src="${tuesdaySchedule.image_url}">
-        </div>
-
-        <div class="card-content">
-          <span class="card-title"><strong><em>${tuesdaySchedule.title}</em></strong></span>
-          <span><strong> Episode(s): ${tuesdaySchedule.episodes} </strong></span><br>  
-          <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
-          <span><strong>Genre: ${genres} </strong></span><br>  
-          <span><strong> Overall Ratings: ${tuesdaySchedule.score} </strong></span>   
-        </div>
-
-        
-        <p class="synopsis">${tuesdaySchedule.synopsis}</p>
-
-
-        <div class="card-action">
-          <a href="${tuesdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
-        </div>
+    var date = new Date(tuesdaySchedule.airing_start)
+    
+    if(tuesdaySchedule.episodes == null){
+      tuesdaySchedule.episodes = "?";
+    }
+    if(tuesdaySchedule.score == null){
+      tuesdaySchedule.score = "N/A"
+    }
+    else{
+      tuesdaySchedule.score = `${tuesdaySchedule.score}/10`
+    }
+    
+    return `
+    <div class="card">
+      <div class="card-image">
+          <img src="${tuesdaySchedule.image_url}">
       </div>
-      
-      
-      `
+      <span class="genre">${genres}</span>
+      <div class="card-content">
+        <span class="card-title"><strong><em>${tuesdaySchedule.title}</em></strong></span>
+        <span><strong> Episode(s): ${tuesdaySchedule.episodes} </strong></span><br>  
+        <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
+        <span><strong> Overall Ratings: ${tuesdaySchedule.score} </strong></span>   
+      </div>    
+      <p class="synopsis">${tuesdaySchedule.synopsis}</p>
+      <div class="card-action">
+        <a href="${tuesdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
+      </div>
+    </div>
+    `
   }).join("");
   
-
 }
 
 
@@ -464,50 +428,42 @@ function wedScheduleData(data){
   schedule.innerHTML = data.wednesday
   .map(wednesdaySchedule => {
 
-      let genres = [];
-      wednesdaySchedule.genres.forEach(type => genres.push(type.name))
+    //set genres as a string and loops the wednesdaySchedule genres array and append each object's "name" to genres    
+    let genres = "";
+    wednesdaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
       
-      var date = new Date(wednesdaySchedule.airing_start)
+    var date = new Date(wednesdaySchedule.airing_start)
+    
+    if(wednesdaySchedule.episodes == null){
+      wednesdaySchedule.episodes = "?";
+    }
+    if(wednesdaySchedule.score == null){
+      wednesdaySchedule.score = "N/A"
+    }
+    else{
+      wednesdaySchedule.score = `${wednesdaySchedule.score}/10`
+    }
       
-
-      if(wednesdaySchedule.episodes == null){
-        wednesdaySchedule.episodes = "?";
-      }
-      if(wednesdaySchedule.score == null){
-        wednesdaySchedule.score = "N/A"
-      }
-      else{
-        wednesdaySchedule.score = `${wednesdaySchedule.score}/10`
-      }
-      
-      return `
-      <div class="card">
-        <div class="card-image">
-            <img src="${wednesdaySchedule.image_url}">
-        </div>
-
-        <div class="card-content">
-          <span class="card-title"><strong><em>${wednesdaySchedule.title}</em></strong></span>
-          <span><strong> Episode(s): ${wednesdaySchedule.episodes} </strong></span><br>  
-          <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
-          <span><strong>Genre: ${genres} </strong></span><br>  
-          <span><strong> Overall Ratings: ${wednesdaySchedule.score} </strong></span>   
-        </div>
-
-        
-        <p class="synopsis">${wednesdaySchedule.synopsis}</p>
-
-
-        <div class="card-action">
-          <a href="${wednesdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
-        </div>
+    return `
+    <div class="card">
+      <div class="card-image">
+          <img src="${wednesdaySchedule.image_url}">
       </div>
-      
-      
-      `
-  }).join("");
+      <span class="genre">${genres}</span>
+      <div class="card-content">
+        <span class="card-title"><strong><em>${wednesdaySchedule.title}</em></strong></span>
+        <span><strong> Episode(s): ${wednesdaySchedule.episodes} </strong></span><br>  
+        <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
+        <span><strong> Overall Ratings: ${wednesdaySchedule.score} </strong></span>   
+      </div>    
+      <p class="synopsis">${wednesdaySchedule.synopsis}</p>
+      <div class="card-action">
+        <a href="${wednesdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
+      </div>
+    </div>
+    `
+}).join("");
   
-
 }
 
 
@@ -525,50 +481,42 @@ function thursScheduleData(data){
   schedule.innerHTML = data.thursday
   .map(thursdaySchedule => {
 
-      let genres = [];
-      thursdaySchedule.genres.forEach(type => genres.push(type.name))
+    //set genres as a string and loops the thursdaySchedule genres array and append each object's "name" to genres
+    let genres = "";
+    thursdaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
       
-      var date = new Date(thursdaySchedule.airing_start)
-      
-
-      if(thursdaySchedule.episodes == null){
-        thursdaySchedule.episodes = "?";
-      }
-      if(thursdaySchedule.score == null){
-        thursdaySchedule.score = "N/A"
-      }
-      else{
-        thursdaySchedule.score = `${thursdaySchedule.score}/10`
-      }
-      
-      return `
-      <div class="card">
-        <div class="card-image">
-            <img src="${thursdaySchedule.image_url}">
-        </div>
-
-        <div class="card-content">
-          <span class="card-title"><strong><em>${thursdaySchedule.title}</em></strong></span>
-          <span><strong> Episode(s): ${thursdaySchedule.episodes} </strong></span><br>  
-          <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
-          <span><strong>Genre: ${genres} </strong></span><br>  
-          <span><strong> Overall Ratings: ${thursdaySchedule.score} </strong></span>   
-        </div>
-
-        
-        <p class="synopsis">${thursdaySchedule.synopsis}</p>
-
-
-        <div class="card-action">
-          <a href="${thursdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
-        </div>
+    var date = new Date(thursdaySchedule.airing_start)
+    
+    if(thursdaySchedule.episodes == null){
+      thursdaySchedule.episodes = "?";
+    }
+    if(thursdaySchedule.score == null){
+      thursdaySchedule.score = "N/A"
+    }
+    else{
+      thursdaySchedule.score = `${thursdaySchedule.score}/10`
+    }
+    
+    return `
+    <div class="card">
+      <div class="card-image">
+          <img src="${thursdaySchedule.image_url}">
       </div>
-      
-      
-      `
+      <span class="genre">${genres}</span>
+      <div class="card-content">
+        <span class="card-title"><strong><em>${thursdaySchedule.title}</em></strong></span>
+        <span><strong> Episode(s): ${thursdaySchedule.episodes} </strong></span><br>  
+        <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
+        <span><strong> Overall Ratings: ${thursdaySchedule.score} </strong></span>   
+      </div>    
+      <p class="synopsis">${thursdaySchedule.synopsis}</p>
+      <div class="card-action">
+        <a href="${thursdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
+      </div>
+    </div>
+    `
   }).join("");
   
-
 }
 
 
@@ -586,49 +534,41 @@ function friScheduleData(data){
   schedule.innerHTML = data.friday
   .map(fridaySchedule => {
 
-      let genres = [];
-      fridaySchedule.genres.forEach(type => genres.push(type.name))
+    //set genres as a string and loops the fridaySchedule genres array and append each object's "name" to genres
+    let genres = "";
+    fridaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
       
-      var date = new Date(fridaySchedule.airing_start)
-      
-
-      if(fridaySchedule.episodes == null){
-        fridaySchedule.episodes = "?";
-      }
-      if(fridaySchedule.score == null){
-        fridaySchedule.score = "N/A"
-      }
-      else{
-        fridaySchedule.score = `${fridaySchedule.score}/10`
-      }
-      
-      return `
-      <div class="card">
-        <div class="card-image">
-            <img src="${fridaySchedule.image_url}">
-        </div>
-
-        <div class="card-content">
-          <span class="card-title"><strong><em>${fridaySchedule.title}</em></strong></span>
-          <span><strong> Episode(s): ${fridaySchedule.episodes} </strong></span><br>  
-          <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
-          <span><strong>Genre: ${genres} </strong></span><br>  
-          <span><strong> Overall Ratings: ${fridaySchedule.score} </strong></span>   
-        </div>
-
-        
-        <p class="synopsis">${fridaySchedule.synopsis}</p>
-
-
-        <div class="card-action">
-          <a href="${fridaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
-        </div>
+    var date = new Date(fridaySchedule.airing_start)
+    
+    if(fridaySchedule.episodes == null){
+      fridaySchedule.episodes = "?";
+    }
+    if(fridaySchedule.score == null){
+      fridaySchedule.score = "N/A"
+    }
+    else{
+      fridaySchedule.score = `${fridaySchedule.score}/10`
+    }
+    
+    return `
+    <div class="card">
+      <div class="card-image">
+          <img src="${fridaySchedule.image_url}">
       </div>
-      
-      
-      `
+      <span class="genre">${genres}</span>
+      <div class="card-content">
+        <span class="card-title"><strong><em>${fridaySchedule.title}</em></strong></span>
+        <span><strong> Episode(s): ${fridaySchedule.episodes} </strong></span><br>  
+        <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
+        <span><strong> Overall Ratings: ${fridaySchedule.score} </strong></span>   
+      </div>    
+      <p class="synopsis">${fridaySchedule.synopsis}</p>
+      <div class="card-action">
+        <a href="${fridaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
+      </div>
+    </div>
+    `
   }).join("");
-  
 
 }
 
@@ -647,50 +587,42 @@ function satScheduleData(data){
   schedule.innerHTML = data.saturday
   .map(saturdaySchedule => {
 
-      let genres = [];
-      saturdaySchedule.genres.forEach(type => genres.push(type.name))
+    //set genres as a string and loops the saturdaySchedule genres array and append each object's "name" to genres
+    let genres = "";
+    saturdaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
       
-      var date = new Date(saturdaySchedule.airing_start)
-      
-
-      if(saturdaySchedule.episodes == null){
-        saturdaySchedule.episodes = "?";
-      }
-      if(saturdaySchedule.score == null){
-        saturdaySchedule.score = "N/A"
-      }
-      else{
-        saturdaySchedule.score = `${saturdaySchedule.score}/10`
-      }
-      
-      return `
-      <div class="card">
-        <div class="card-image">
-            <img src="${saturdaySchedule.image_url}">
-        </div>
-
-        <div class="card-content">
-          <span class="card-title"><strong><em>${saturdaySchedule.title}</em></strong></span>
-          <span><strong> Episode(s): ${saturdaySchedule.episodes} </strong></span><br>  
-          <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
-          <span><strong>Genre: ${genres} </strong></span><br>  
-          <span><strong> Overall Ratings: ${saturdaySchedule.score} </strong></span>   
-        </div>
-
-        
-        <p class="synopsis">${saturdaySchedule.synopsis}</p>
-
-
-        <div class="card-action">
-          <a href="${saturdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
-        </div>
+    var date = new Date(saturdaySchedule.airing_start)
+    
+    if(saturdaySchedule.episodes == null){
+      saturdaySchedule.episodes = "?";
+    }
+    if(saturdaySchedule.score == null){
+      saturdaySchedule.score = "N/A"
+    }
+    else{
+      saturdaySchedule.score = `${saturdaySchedule.score}/10`
+    }
+    
+    return `
+    <div class="card">
+      <div class="card-image">
+          <img src="${saturdaySchedule.image_url}">
       </div>
-      
-      
-      `
+      <span class="genre">${genres}</span>
+      <div class="card-content">
+        <span class="card-title"><strong><em>${saturdaySchedule.title}</em></strong></span>
+        <span><strong> Episode(s): ${saturdaySchedule.episodes} </strong></span><br>  
+        <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
+        <span><strong> Overall Ratings: ${saturdaySchedule.score} </strong></span>   
+      </div>    
+      <p class="synopsis">${saturdaySchedule.synopsis}</p>
+      <div class="card-action">
+        <a href="${saturdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
+      </div>
+    </div>
+    `
   }).join("");
   
-
 }
 
 
@@ -708,51 +640,44 @@ function sunScheduleData(data){
   schedule.innerHTML = data.sunday
   .map(sundaySchedule => {
 
-      let genres = [];
-      sundaySchedule.genres.forEach(type => genres.push(type.name))
+    //set genres as a string and loops the sundaySchedule genres array and append each object's "name" to genres
+    let genres = "";
+    sundaySchedule.genres.forEach(type => genres += ('<span class="genretype">' + type.name + '</span>'))
       
-      var date = new Date(sundaySchedule.airing_start)
-      
-
-      if(sundaySchedule.episodes == null){
-        sundaySchedule.episodes = "?";
-      }
-      if(sundaySchedule.score == null){
-        sundaySchedule.score = "N/A"
-      }
-      else{
-        sundaySchedule.score = `${sundaySchedule.score}/10`
-      }
-      
-      return `
-      <div class="card">
-        <div class="card-image">
-            <img src="${sundaySchedule.image_url}">
-        </div>
-
-        <div class="card-content">
-          <span class="card-title"><strong><em>${sundaySchedule.title}</em></strong></span>
-          <span><strong> Episode(s): ${sundaySchedule.episodes} </strong></span><br>  
-          <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
-          <span><strong>Genre: ${genres} </strong></span><br>  
-          <span><strong> Overall Ratings: ${sundaySchedule.score} </strong></span>   
-        </div>
-
-        
-        <p class="synopsis">${sundaySchedule.synopsis}</p>
-
-
-        <div class="card-action">
-          <a href="${sundaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
-        </div>
+    var date = new Date(sundaySchedule.airing_start)
+    
+    if(sundaySchedule.episodes == null){
+      sundaySchedule.episodes = "?";
+    }
+    if(sundaySchedule.score == null){
+      sundaySchedule.score = "N/A"
+    }
+    else{
+      sundaySchedule.score = `${sundaySchedule.score}/10`
+    }
+    
+    return `
+    <div class="card">
+      <div class="card-image">
+          <img src="${sundaySchedule.image_url}">
       </div>
-      
-      
-      `
+      <span class="genre">${genres}</span>
+      <div class="card-content">
+        <span class="card-title"><strong><em>${sundaySchedule.title}</em></strong></span>
+        <span><strong> Episode(s): ${sundaySchedule.episodes} </strong></span><br>  
+        <span><strong>Air Date: ${date.toLocaleString()} </strong></span><br>  
+        <span><strong> Overall Ratings: ${sundaySchedule.score} </strong></span>   
+      </div>    
+      <p class="synopsis">${sundaySchedule.synopsis}</p>
+      <div class="card-action">
+        <a href="${sundaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
+      </div>
+    </div>
+    `
   }).join("");
   
-
 }
+
 
 /*Functions to run the webpage*/
 function loadpage(){
@@ -762,8 +687,11 @@ function loadpage(){
 
 
 function myFunction(){ 
-  document.getElementById("search").innerHTML
+  $('html,body').animate({
+    scrollTop: $(".sect").offset().top},
+    'slow');
 }
+
 
 /*Loads Search Result API */
 window.addEventListener("load", loadpage)
@@ -800,3 +728,11 @@ $(document).ready(function(){
       $('.carousel').carousel('next');
     }, 4500); 
 }   );
+
+
+$('#search').keypress(function(e){
+  if(e.keyCode == 13){
+    e.preventDefault();
+  }
+});
+
