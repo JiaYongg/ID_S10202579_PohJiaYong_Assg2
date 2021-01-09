@@ -100,3 +100,8 @@ I received inspiration mainly from
 https://myanimelist.net/ for my "Home" page 
 
 https://myanimelist.net/anime/season/schedule for my "Airing Animes" page
+
+# Github Link
+Repository Link: https://github.com/JiaYongg/ID_S10202579_PohJiaYong_Assg2
+
+Site Link: https://jiayongg.github.io/ID_S10202579_PohJiaYong_Assg2/
