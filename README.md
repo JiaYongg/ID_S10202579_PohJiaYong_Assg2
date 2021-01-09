@@ -1,5 +1,6 @@
 # MyAnimeList(MAL) Replica (ID Assignment-2)
 Done by: Poh Jia Yong, S10202579J
+
 MAL Replica allows users to view the "Top Upcoming Anime", "Most Popular Anime of All Time" and shows that are currently airing for each day(monday-friday) based on the API.
 
 Each of the anime that is shown in the site includes:
@@ -24,10 +25,12 @@ From a user's perspective, viewing my webpage would be similar to viewing it fro
 I specifically chose this API because I felt that it would be useful to me in the future as I love watching animes and reading the synopsis for each interesting title. So to actually creating them for my own use, it is something that I had always wanted to do.
 
 ### Wireframe Links
-*scroll down upon clicking into the wireframe to view it completely!
-*design made in wireframe is intentional to make it feel like my webpage.
 1. Desktop Wireframe: https://xd.adobe.com/view/173eb18d-3893-4757-826c-ca579574cec0-426d/grid
 2. Mobile Wireframe: https://xd.adobe.com/view/b2ed8325-d811-4a98-8666-4b94c2099131-e7be/grid
+   
+*scroll down upon clicking into the wireframe to view it completely!
+
+*design made in wireframe is intentional to make it feel like my webpage.
 # Features
 
 ## Existing Features
