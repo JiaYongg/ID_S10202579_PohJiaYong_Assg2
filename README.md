@@ -49,6 +49,7 @@ Feature
 1. Countdown Timer to the next episode for each currently airing anime.
 2. Add anime to a list to track episode progress of animes.
 3. Give recommendations based on user's preference genres.
+   
 # Technologies Used
 1. HTML5 - Used to display data and assign classes to multiple HTML tags
 2. CSS3 - Used to structure the alignment for the webpage like making it a Flex Box and shifting the content to my liking by using Margin or Padding. Styled the webpage for certain elements to make it have colors and font size/style.
@@ -74,19 +75,28 @@ Feature
 
 ## Bugs and Problems
 1. Search result were initially viewed vertically for mobile which can be a problem because there are multi animes for one category, which means it will lead to endless scrolling if it is vertical ! -Fixed to make it scroll horizontally for each category.
-2. Searching of anime MAY be slow due to the API fetch, when it is searching for data. -Fix base on user's input
+2. Searching of anime MAY be slow due to the API fetch, when it is searching for data. -Fix base on user's input.
+3. Due to framework issue, "Hamburger Menu" icon might not pop out but instead be replaced with a text called "menu".
 
 # Credits
 
 ## Content
 Anime contents are all sourced from Jikan API
+
 Jikan URL: https://jikan.moe/
+
 Jikan API URL: https://api.jikan.moe/v3
+
+Framework used: https://materializecss.com/
 ## Media
 Logo used: https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Yin_yang.svg/220px-Yin_yang.svg.png
 Anime images used: https://api.jikan.moe/v3
+
 *all anime images are all provided by the API data
 
 ## Acknowledgements
 I received inspiration mainly from 
-https://myanimelist.net/ for my "Home" page and https://myanimelist.net/anime/season/schedule for my "Airing Animes" page
+
+https://myanimelist.net/ for my "Home" page 
+
+https://myanimelist.net/anime/season/schedule for my "Airing Animes" page
