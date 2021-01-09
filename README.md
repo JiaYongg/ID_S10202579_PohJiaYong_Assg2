@@ -1,21 +1,21 @@
 # Budget MyAnimeList
 
-##Design Process
+## Design Process
 
-##Features
+## Features
 
-###Existing Features
+### Existing Features
 
-###Features Left to Implement
+### Features Left to Implement
 
-##Technologies Used
+## Technologies Used
 
-##Testing
+## Testing
 
-##Credits
+## Credits
 
-###Content
+### Content
 
-###Media
+### Media
 
-###Acknowledgements
+### Acknowledgements
