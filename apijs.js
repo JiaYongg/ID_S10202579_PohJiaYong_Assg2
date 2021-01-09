@@ -11,7 +11,7 @@ function searchTitle(event){
   .then(res => res.json()) //converts to json 
   .then(eachTitle) //calls the eachTitle function
   .then(myFunction)//upon clicking the "Search" button, it scrolls downs to the result
-  .catch(err =>console.log(err.message)) //shows error message if any in console.log
+  .catch(err =>console.log(err.message)); //shows error message if any in console.log
 }
 
 /* Search Result API */
@@ -27,7 +27,7 @@ function eachTitle(name){
         acc[type].push(anime);
         return acc;
 
-      }, {})
+      }, {});
       //console.log(animeCat)
       
       //loop through the animeCat array and gets the key of the object and map it with the animelist
@@ -35,7 +35,7 @@ function eachTitle(name){
 
       let animeList = animeCat[key]
       .map(title =>{
-        var date = new Date(title.start_date) //converts json time format to yy/mm/dd
+        var date = new Date(title.start_date); //converts json time format to yy/mm/dd
 
         //gets the anime start & air date
         var startDate = [
@@ -87,7 +87,7 @@ function eachTitle(name){
               <a href="${title.url}" class="card-action" target="_blank">MyAnimeList Link</a>
             </div>
           </div>
-          `
+          `;
         }).join("");
 
         //prints the anime list and the category that the anime is listed in uppercase e.g. TV/OVA/Movie
@@ -96,7 +96,7 @@ function eachTitle(name){
           <h4 style="text-align: center;">${key.toUpperCase()}</h4>
           <div class="rowrow" id="section2">${animeList}</div>
         </section>
-        `
+        `;
         }).join("");
 
 }
@@ -110,11 +110,11 @@ function topAirAnimeapi(){
 }
 
 function topAnimeData(data){
-  let topResult = document.getElementById("top-first")
-  let topResult2 = document.getElementById("top-second")
-  let topResult3 = document.getElementById("top-third")
-  let topResult4 = document.getElementById("top-fourth")
-  let topResult5 = document.getElementById("top-fifth")
+  let topResult = document.getElementById("top-first");
+  let topResult2 = document.getElementById("top-second");
+  let topResult3 = document.getElementById("top-third");
+  let topResult4 = document.getElementById("top-fourth");
+  let topResult5 = document.getElementById("top-fifth");
 
   //data.top.forEach(title => { console.log(title)}); 
 
@@ -122,7 +122,7 @@ function topAnimeData(data){
   topResult.innerHTML = data.top
   .map(topanime => {
     if (topanime.episodes == null) {
-      topanime.episodes = "To be confirmed"
+      topanime.episodes = "To be confirmed";
     }
     if (topanime.rank == 1) //takes the rank 1 show
     return `     
@@ -130,7 +130,7 @@ function topAnimeData(data){
     <h5 style="color: gold;">Rank ${topanime.rank}</h5>
     <a href="${topanime.url} class="link" target="_blank"><h5>${topanime.title}</h5></a>
     <p style="text-align: center; font-weight: bold;">Overall Ratings: ${topanime.score}/10</p>
-    `
+    `;
 }).join("");
 
   topResult2.innerHTML = data.top
@@ -141,7 +141,7 @@ function topAnimeData(data){
     <h5 style="color:	silver;">Rank ${topanime.rank}</h5>
     <a href="${topanime.url} class="link" target="_blank"><h5>${topanime.title}</h5></a>
     <p style="text-align: center; font-weight: bold;">Overall Ratings: ${topanime.score}/10</p>
-    `
+    `;
 }).join("");
 
 topResult3.innerHTML = data.top
@@ -152,7 +152,7 @@ topResult3.innerHTML = data.top
   <h5 style="color:	brown;">Rank ${topanime.rank}</h5>
   <a href="${topanime.url} class="link" target="_blank"><h5>${topanime.title}</h5></a>
   <p style="text-align: center; font-weight: bold;">Overall Ratings: ${topanime.score}/10</p>
-  `
+  `;
 }).join("");
 
 topResult4.innerHTML = data.top
@@ -163,7 +163,7 @@ topResult4.innerHTML = data.top
   <h5>Rank ${topanime.rank}</h5>
   <a href="${topanime.url} class="link" target="_blank"><h5>${topanime.title}</h5></a>
   <p style="text-align: center; font-weight: bold;">Overall Ratings: ${topanime.score}/10</p>
-  `
+  `;
 }).join("");
 
 topResult5.innerHTML = data.top
@@ -174,7 +174,7 @@ topResult5.innerHTML = data.top
   <h5>Rank ${topanime.rank}</h5>
   <a href="${topanime.url} class="link" target="_blank"><h5>${topanime.title}</h5></a>
   <p style="text-align: center; font-weight: bold;">Overall Ratings: ${topanime.score}/10</p>
-  `
+  `;
 }).join("");
   
 }
@@ -191,11 +191,11 @@ function mostPopAnimeapi(){
 function mostPopAnimeData(data){
   //data.top.forEach(title => { console.log(title)}); 
 
-  let popResult = document.getElementById("pop-first")
-  let popResult2 = document.getElementById("pop-second")
-  let popResult3 = document.getElementById("pop-third")
-  let popResult4 = document.getElementById("pop-fourth")
-  let popResult5 = document.getElementById("pop-fifth")
+  let popResult = document.getElementById("pop-first");
+  let popResult2 = document.getElementById("pop-second");
+  let popResult3 = document.getElementById("pop-third");
+  let popResult4 = document.getElementById("pop-fourth");
+  let popResult5 = document.getElementById("pop-fifth");
 
   popResult.innerHTML = data.top
   .map(popanime => {
@@ -205,7 +205,7 @@ function mostPopAnimeData(data){
       <h5 style="color: gold;">Rank ${popanime.rank}</h5>
       <a href="${popanime.url} class="link" target="_blank"><h5>${popanime.title}</h5></a>
       <p style="text-align: center; font-weight: bold;" class="ep">Episodes: ${popanime.episodes}</p>
-      `
+      `;
   }).join("");
 
   popResult2.innerHTML = data.top
@@ -216,7 +216,7 @@ function mostPopAnimeData(data){
       <h5 style="color:	silver;">Rank ${popanime.rank}</h5>
       <a href="${popanime.url} class="link" target="_blank"><h5>${popanime.title}</h5></a>
       <p style="text-align: center; font-weight: bold;" class="ep">Episodes: ${popanime.episodes}</p>
-      `
+      `;
   }).join("");
 
   popResult3.innerHTML = data.top
@@ -227,7 +227,7 @@ function mostPopAnimeData(data){
       <h5 style="color: brown;">Rank ${popanime.rank}</h5>
       <a href="${popanime.url} class="link" target="_blank"><h5>${popanime.title}</h5></a>
       <p style="text-align: center; font-weight: bold; "class="ep">Episodes: ${popanime.episodes}</p>
-      `
+      `;
   }).join("");
 
   popResult4.innerHTML = data.top
@@ -238,7 +238,7 @@ function mostPopAnimeData(data){
       <h5>Rank ${popanime.rank}</h5>
       <a href="${popanime.url} class="link" target="_blank"><h5>${popanime.title}</h5></a>
       <p style="text-align: center; font-weight: bold;" class="ep">Episodes: ${popanime.episodes}</p>
-      `
+      `;
   }).join("");
 
   popResult5.innerHTML = data.top
@@ -249,7 +249,7 @@ function mostPopAnimeData(data){
       <h5>Rank ${popanime.rank}</h5>
       <a href="${popanime.url} class="link" target="_blank"><h5>${popanime.title}</h5></a>
       <p style="text-align: center; font-weight: bold;" class="ep">Episodes: ${popanime.episodes}</p>
-      `
+      `;
   }).join("");
 
 }
@@ -264,17 +264,17 @@ function upcAnimeapi(){
 }
 
 function upcAnimeData(data){
-  let topUpcResult = document.getElementById("upcResult")
+  let topUpcResult = document.getElementById("upcResult");
   //data.top.forEach(title => { console.log(title)}); 
 
 
   topUpcResult.innerHTML = data.top
   .map(topUpcAnime => {
     if (topUpcAnime.episodes == null){
-      topUpcAnime.episodes = "?"
+      topUpcAnime.episodes = "?";
     }
     if (topUpcAnime.score == 0){
-      topUpcAnime.score = "N/A"
+      topUpcAnime.score = "N/A";
     }
     if (topUpcAnime.rank <= 5)
 
@@ -298,7 +298,7 @@ function upcAnimeData(data){
         </div>
       </li>
     </div>
-    `
+    `;
   }).join("");
 
 }
@@ -316,7 +316,7 @@ function monScheduleapi(){
 
 function monScheduleData(data){
 
-  let schedule = document.getElementById("monAnimeSchedule")
+  let schedule = document.getElementById("monAnimeSchedule");
   //console.log(data)
   //data.monday.forEach(title => { console.log(title)}); 
   schedule.innerHTML = data.monday
@@ -328,22 +328,22 @@ function monScheduleData(data){
     var i;
     for (i = 0; i < (mondaySchedule.genres).length; i++) {
       if(i == 4){
-        genres += "<br>"
+        genres += "<br>";
       }
-      genres += ('<span class="genretype">' + mondaySchedule.genres[i].name + '</span>')
+      genres += ('<span class="genretype">' + mondaySchedule.genres[i].name + '</span>');
     }
     
     // console.log(genres)
-    var date = new Date(mondaySchedule.airing_start)
+    var date = new Date(mondaySchedule.airing_start);
 
     if(mondaySchedule.episodes == null){
       mondaySchedule.episodes = "?";
     }
     if(mondaySchedule.score == null){
-      mondaySchedule.score = "N/A"
+      mondaySchedule.score = "N/A";
     }
     else{
-      mondaySchedule.score = `${mondaySchedule.score}/10`
+      mondaySchedule.score = `${mondaySchedule.score}/10`;
     }
 
     return `
@@ -363,7 +363,7 @@ function monScheduleData(data){
         <a href="${mondaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
       </div>
     </div>
-    `
+    `;
   }).join("");
   
 }
@@ -378,7 +378,7 @@ function tuesScheduleapi(){
 
 function tuesScheduleData(data){
 
-  let schedule = document.getElementById("tuesAnimeSchedule")
+  let schedule = document.getElementById("tuesAnimeSchedule");
   schedule.innerHTML = data.tuesday
   .map(tuesdaySchedule => {
 
@@ -388,21 +388,21 @@ function tuesScheduleData(data){
     var i;
     for (i = 0; i < (tuesdaySchedule.genres).length; i++) {
       if(i == 4){
-        genres += "<br>"
+        genres += "<br>";
       }
-      genres += ('<span class="genretype">' + tuesdaySchedule.genres[i].name + '</span>')
+      genres += ('<span class="genretype">' + tuesdaySchedule.genres[i].name + '</span>');
     }
       
-    var date = new Date(tuesdaySchedule.airing_start)
+    var date = new Date(tuesdaySchedule.airing_start);
     
     if(tuesdaySchedule.episodes == null){
       tuesdaySchedule.episodes = "?";
     }
     if(tuesdaySchedule.score == null){
-      tuesdaySchedule.score = "N/A"
+      tuesdaySchedule.score = "N/A";
     }
     else{
-      tuesdaySchedule.score = `${tuesdaySchedule.score}/10`
+      tuesdaySchedule.score = `${tuesdaySchedule.score}/10`;
     }
     
     return `
@@ -422,7 +422,7 @@ function tuesScheduleData(data){
         <a href="${tuesdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
       </div>
     </div>
-    `
+    `;
   }).join("");
   
 }
@@ -438,7 +438,7 @@ function wedScheduleapi(){
 
 function wedScheduleData(data){
 
-  let schedule = document.getElementById("wedAnimeSchedule")
+  let schedule = document.getElementById("wedAnimeSchedule");
   schedule.innerHTML = data.wednesday
   .map(wednesdaySchedule => {
 
@@ -448,21 +448,21 @@ function wedScheduleData(data){
     var i;
     for (i = 0; i < (wednesdaySchedule.genres).length; i++) {
       if(i == 4){
-        genres += "<br>"
+        genres += "<br>";
       }
-      genres += ('<span class="genretype">' + wednesdaySchedule.genres[i].name + '</span>')
+      genres += ('<span class="genretype">' + wednesdaySchedule.genres[i].name + '</span>');
     }
       
-    var date = new Date(wednesdaySchedule.airing_start)
+    var date = new Date(wednesdaySchedule.airing_start);
     
     if(wednesdaySchedule.episodes == null){
       wednesdaySchedule.episodes = "?";
     }
     if(wednesdaySchedule.score == null){
-      wednesdaySchedule.score = "N/A"
+      wednesdaySchedule.score = "N/A";
     }
     else{
-      wednesdaySchedule.score = `${wednesdaySchedule.score}/10`
+      wednesdaySchedule.score = `${wednesdaySchedule.score}/10`;
     }
       
     return `
@@ -482,7 +482,7 @@ function wedScheduleData(data){
         <a href="${wednesdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
       </div>
     </div>
-    `
+    `;
 }).join("");
   
 }
@@ -498,7 +498,7 @@ function thursScheduleapi(){
 
 function thursScheduleData(data){
 
-  let schedule = document.getElementById("thursAnimeSchedule")
+  let schedule = document.getElementById("thursAnimeSchedule");
   schedule.innerHTML = data.thursday
   .map(thursdaySchedule => {
 
@@ -508,21 +508,21 @@ function thursScheduleData(data){
     var i;
     for (i = 0; i < (thursdaySchedule.genres).length; i++) {
       if(i == 4){
-        genres += "<br>"
+        genres += "<br>";
       }
-      genres += ('<span class="genretype">' + thursdaySchedule.genres[i].name + '</span>')
+      genres += ('<span class="genretype">' + thursdaySchedule.genres[i].name + '</span>');
     }
       
-    var date = new Date(thursdaySchedule.airing_start)
+    var date = new Date(thursdaySchedule.airing_start);
     
     if(thursdaySchedule.episodes == null){
       thursdaySchedule.episodes = "?";
     }
     if(thursdaySchedule.score == null){
-      thursdaySchedule.score = "N/A"
+      thursdaySchedule.score = "N/A";
     }
     else{
-      thursdaySchedule.score = `${thursdaySchedule.score}/10`
+      thursdaySchedule.score = `${thursdaySchedule.score}/10`;
     }
     
     return `
@@ -542,7 +542,7 @@ function thursScheduleData(data){
         <a href="${thursdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
       </div>
     </div>
-    `
+    `;
   }).join("");
   
 }
@@ -558,7 +558,7 @@ function friScheduleapi(){
 
 function friScheduleData(data){
 
-  let schedule = document.getElementById("friAnimeSchedule")
+  let schedule = document.getElementById("friAnimeSchedule");
   schedule.innerHTML = data.friday
   .map(fridaySchedule => {
 
@@ -568,21 +568,21 @@ function friScheduleData(data){
     var i;
     for (i = 0; i < (fridaySchedule.genres).length; i++) {
       if(i == 4){
-        genres += "<br>"
+        genres += "<br>";
       }
-      genres += ('<span class="genretype">' + fridaySchedule.genres[i].name + '</span>')
+      genres += ('<span class="genretype">' + fridaySchedule.genres[i].name + '</span>');
     }
       
-    var date = new Date(fridaySchedule.airing_start)
+    var date = new Date(fridaySchedule.airing_start);
     
     if(fridaySchedule.episodes == null){
       fridaySchedule.episodes = "?";
     }
     if(fridaySchedule.score == null){
-      fridaySchedule.score = "N/A"
+      fridaySchedule.score = "N/A";
     }
     else{
-      fridaySchedule.score = `${fridaySchedule.score}/10`
+      fridaySchedule.score = `${fridaySchedule.score}/10`;
     }
     
     return `
@@ -602,7 +602,7 @@ function friScheduleData(data){
         <a href="${fridaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
       </div>
     </div>
-    `
+    `;
   }).join("");
 
 }
@@ -618,7 +618,7 @@ function satScheduleapi(){
 
 function satScheduleData(data){
 
-  let schedule = document.getElementById("satAnimeSchedule")
+  let schedule = document.getElementById("satAnimeSchedule");
   schedule.innerHTML = data.saturday
   .map(saturdaySchedule => {
 
@@ -628,20 +628,20 @@ function satScheduleData(data){
     var i;
     for (i = 0; i < (saturdaySchedule.genres).length; i++) {
       if(i == 4){
-        genres += "<br>"
+        genres += "<br>";
       }
-      genres += ('<span class="genretype">' + saturdaySchedule.genres[i].name + '</span>')
+      genres += ('<span class="genretype">' + saturdaySchedule.genres[i].name + '</span>');
     }     
-    var date = new Date(saturdaySchedule.airing_start)
+    var date = new Date(saturdaySchedule.airing_start);
     
     if(saturdaySchedule.episodes == null){
       saturdaySchedule.episodes = "?";
     }
     if(saturdaySchedule.score == null){
-      saturdaySchedule.score = "N/A"
+      saturdaySchedule.score = "N/A";
     }
     else{
-      saturdaySchedule.score = `${saturdaySchedule.score}/10`
+      saturdaySchedule.score = `${saturdaySchedule.score}/10`;
     }
     
     return `
@@ -661,7 +661,7 @@ function satScheduleData(data){
         <a href="${saturdaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
       </div>
     </div>
-    `
+    `;
   }).join("");
   
 }
@@ -677,7 +677,7 @@ function sunScheduleapi(){
 
 function sunScheduleData(data){
 
-  let schedule = document.getElementById("sunAnimeSchedule")
+  let schedule = document.getElementById("sunAnimeSchedule");
   schedule.innerHTML = data.sunday
   .map(sundaySchedule => {
 
@@ -688,22 +688,22 @@ function sunScheduleData(data){
     var i;
     for (i = 0; i < (sundaySchedule.genres).length; i++) {
       if(i == 4){
-        genres += "<br>"
+        genres += "<br>";
       }
-      genres += ('<span class="genretype">' + sundaySchedule.genres[i].name + '</span>')
+      genres += ('<span class="genretype">' + sundaySchedule.genres[i].name + '</span>');
     }
 
   
-    var date = new Date(sundaySchedule.airing_start)
+    var date = new Date(sundaySchedule.airing_start);
     
     if(sundaySchedule.episodes == null){
       sundaySchedule.episodes = "?";
     }
     if(sundaySchedule.score == null){
-      sundaySchedule.score = "N/A"
+      sundaySchedule.score = "N/A";
     }
     else{
-      sundaySchedule.score = `${sundaySchedule.score}/10`
+      sundaySchedule.score = `${sundaySchedule.score}/10`;
     }
     
     return `
@@ -723,7 +723,7 @@ function sunScheduleData(data){
         <a href="${sundaySchedule.url}" class="card-action" target="_blank">MyAnimeList Link</a>
       </div>
     </div>
-    `
+    `;
   }).join("");
   
 }
@@ -744,27 +744,27 @@ function myFunction(){
 
 
 /*Loads Search Result API */
-window.addEventListener("load", loadpage)
+window.addEventListener("load", loadpage);
 /*Loads Top Airing Anime API */
 window.addEventListener("load", topAirAnimeapi);
 /*Loads Most Popular Anime API */
-window.addEventListener("load", mostPopAnimeapi)
+window.addEventListener("load", mostPopAnimeapi);
 /*Loads Top Upcoming Anime API */
 window.addEventListener("load", upcAnimeapi);
 /*Loads Monday Schedule Anime API */
-window.addEventListener("load", monScheduleapi)
+window.addEventListener("load", monScheduleapi);
 /*Loads Tuesday Schedule Anime API */
-window.addEventListener("load", tuesScheduleapi)
+window.addEventListener("load", tuesScheduleapi);
 /*Loads Wednesday Schedule Anime API */
-window.addEventListener("load", wedScheduleapi)
+window.addEventListener("load", wedScheduleapi);
 /*Loads Thursday Schedule Anime API */
-window.addEventListener("load", thursScheduleapi)
+window.addEventListener("load", thursScheduleapi);
 /*Loads Friday Schedule Anime API */
-window.addEventListener("load", friScheduleapi)
+window.addEventListener("load", friScheduleapi);
 /*Loads Saturday Schedule Anime API */
-window.addEventListener("load", satScheduleapi)
+window.addEventListener("load", satScheduleapi);
 /*Loads Sunday Schedule Anime API */
-window.addEventListener("load", sunScheduleapi)
+window.addEventListener("load", sunScheduleapi);
 
 
 //sidebar navigation for mobile
@@ -785,4 +785,3 @@ $('#search').keypress(function(e){
     myFunction;
   }
 });
-

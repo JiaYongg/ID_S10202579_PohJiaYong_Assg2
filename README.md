@@ -73,6 +73,14 @@ Feature
 7. Checked that the search function will refresh and display new data based on user's input after it has already been keyed in once ✔
 8. Checked that all clickable items are send to a new tab instead of displaying it in the same page, by using target="_blank" ✔
 
+## Site Validation
+1. W3C MarkUp Validation - All Passed ✔
+2. W3C CSS Validation - All Passed ✔
+3. W3C Link Checking - All Passed ✔
+4. Spell Checking - Failed due to "Anime" & "Animes" not being used in english term ✖
+5. All Text Checking - All Passed ✔
+6. JS Code Checking - 51 Warnings(valid) 
+
 ## Bugs and Problems
 1. Search result were initially viewed vertically for mobile which can be a problem because there are multi animes for one category, which means it will lead to endless scrolling if it is vertical ! -Fixed to make it scroll horizontally for each category.
 2. Searching of anime MAY be slow due to the API fetch, when it is searching for data. -Fix base on user's input.
