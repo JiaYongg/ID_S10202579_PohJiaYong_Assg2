@@ -20,9 +20,9 @@ I also designed it to look plain similar to the MyAnimeList webpage so that the 
 My webpage also shows updated version of the animes! 
 Let's say if there are new animes coming out in March, the "Top Upcoming Anime" list would update based on the API from MyAnimeList to the top upcoming animes!
 
-From a user's perspective, viewing my webpage would be similar to viewing it from the MyAnimeList in terms of looks and content, it is user-friendly and looks almost the same as the actualy MyAnimeList!
+From a user's perspective, viewing my webpage would be similar to viewing it from the MyAnimeList in terms of looks and content, it is user-friendly and looks almost the same as the actual MyAnimeList!
 
-I specifically chose this API because I felt that it would be useful to me in the future as I love watching animes and reading the synopsis for each interesting title. So to actually creating them for my own use, it is something that I had always wanted to do.
+I specifically chose this API because I felt that it would be useful to me in the future as I love watching animes and reading the synopsis for each interesting title. So to actually create them for my own use, it is something that I had always wanted to do.
 
 ### Wireframe Links
 1. Desktop Wireframe: https://xd.adobe.com/view/173eb18d-3893-4757-826c-ca579574cec0-426d/grid
