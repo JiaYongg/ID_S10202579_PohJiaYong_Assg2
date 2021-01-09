@@ -1,3 +1,21 @@
-# ID_S10202579_PohJiaYong_Assg2
+# Budget MyAnimeList
 
-*YET TO WRITE THE FEATURES DOWN
+##Design Process
+
+##Features
+
+###Existing Features
+
+###Features Left to Implement
+
+##Technologies Used
+
+##Testing
+
+##Credits
+
+###Content
+
+###Media
+
+###Acknowledgements
