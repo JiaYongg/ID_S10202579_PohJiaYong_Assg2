@@ -1,4 +1,4 @@
-let url = "https://api.jikan.moe/v3";
+let url = "https://api.jikan.moe/v4";
 
 //Search title API
 function searchTitle(event){
